@@ -96,68 +96,68 @@ class _GesturesTabState extends State<GesturesTab> {
             },
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
-          onSecondaryTapDown: (details) {
-             _tapDownDetails = details;
-             setState(() => _isPressed = true);
-          },
-          onSecondaryTapUp: (_) => setState(() => _isPressed = false),
-          onSecondaryTapCancel: () => setState(() => _isPressed = false),
-          onSecondaryTap: () {
-            setState(() {
-              _status = 'Правый клик (Контекстное меню)!';
-              _isPressed = false;
-            });
-            _showContextMenu(context);
-          },
-          onTapDown: (_) => setState(() => _isPressed = true),
-          onTapUp: (_) => setState(() => _isPressed = false),
-          onTapCancel: () => setState(() => _isPressed = false),
-          onTap: () => setState(() => _status = 'Левый клик!'),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 100),
-            transform: Matrix4.identity()..scale(_isPressed ? 0.96 : 1.0),
-            transformAlignment: Alignment.center,
-            width: 400,
-            height: 250,
-            decoration: BoxDecoration(
-              color: _isPressed 
-                  ? Colors.blue.shade700 
-                  : (_isHovering ? Colors.blueAccent : Colors.grey[200]),
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: _isHovering && !_isPressed
-                  ? [BoxShadow(color: Colors.blue.withOpacity(0.3), blurRadius: 15, spreadRadius: 2, offset: const Offset(0, 4))]
-                  : [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: _isPressed ? 2 : 4, offset: Offset(0, _isPressed ? 1 : 2))],
-            ),
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                 const Icon(Icons.desktop_windows, size: 48, color: Colors.black54),
-                 const SizedBox(height: 16),
-                 Text(
-                  _status,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: _isHovering ? Colors.white : Colors.black87,
-                  ),
+              onSecondaryTapDown: (details) {
+                _tapDownDetails = details;
+                setState(() => _isPressed = true);
+              },
+              onSecondaryTapUp: (_) => setState(() => _isPressed = false),
+              onSecondaryTapCancel: () => setState(() => _isPressed = false),
+              onSecondaryTap: () {
+                setState(() {
+                  _status = 'Правый клик (Контекстное меню)!';
+                  _isPressed = false;
+                });
+                _showContextMenu(context);
+              },
+              onTapDown: (_) => setState(() => _isPressed = true),
+              onTapUp: (_) => setState(() => _isPressed = false),
+              onTapCancel: () => setState(() => _isPressed = false),
+              onTap: () => setState(() => _status = 'Левый клик!'),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 100),
+                transform: Matrix4.identity()..scale(_isPressed ? 0.96 : 1.0),
+                transformAlignment: Alignment.center,
+                width: 400,
+                height: 250,
+                decoration: BoxDecoration(
+                  color: _isPressed
+                      ? Colors.blue.shade700
+                      : (_isHovering ? Colors.blueAccent : Colors.grey[200]),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: _isHovering && !_isPressed
+                      ? [BoxShadow(color: Colors.blue.withOpacity(0.3), blurRadius: 15, spreadRadius: 2, offset: const Offset(0, 4))]
+                      : [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: _isPressed ? 2 : 4, offset: Offset(0, _isPressed ? 1 : 2))],
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  _isHovering ? "Курсор внутри" : "Курсор снаружи",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: _isHovering ? Colors.white70 : Colors.black54,
-                  ),
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.desktop_windows, size: 48, color: Colors.black54),
+                    const SizedBox(height: 16),
+                    Text(
+                      _status,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: _isHovering ? Colors.white : Colors.black87,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      _isHovering ? "Курсор внутри" : "Курсор снаружи",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: _isHovering ? Colors.white70 : Colors.black54,
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
       ),
-      ),
-    ),
     );
   }
 }
