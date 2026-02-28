@@ -1,6 +1,6 @@
 # doklad
 
-A new Flutter project.
+A flutter decktop example app
 
 ## Getting Started
 
